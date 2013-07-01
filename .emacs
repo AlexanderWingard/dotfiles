@@ -49,7 +49,8 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar my-packages '(browse-kill-ring
+(defvar my-packages '(windresize
+                      browse-kill-ring
                       unbound
                       ace-jump-mode
                       org
