@@ -1,5 +1,5 @@
-; General settings
-
+;;;; General settings
+(require 'cl)
 (setq safe-local-variable-values '((org-adapt-indentation)))
 (prefer-coding-system 'utf-8-unix)
 (setq-default indent-tabs-mode nil)
@@ -14,7 +14,7 @@
 (show-paren-mode 1)
 (put 'narrow-to-region 'disabled nil)
 
-; Key bindings
+;;;; Global key bindings
 (global-set-key (kbd "C-x C-b") 'bs-show)
 
 (global-set-key (kbd "C-c SPC") 'ace-jump-mode)
@@ -28,7 +28,7 @@
 
 (global-set-key (kbd "<f5>") 'revert-buffer-no-confirm)
 
-; Mode specific bindings
+;;;; Mode specific bindings
 (eval-after-load 'comint
   '(progn (define-key comint-mode-map (kbd "C-c SPC") nil)))
 
@@ -39,7 +39,9 @@
 (eval-after-load 'magit 
   '(progn (define-key magit-status-mode-map (kbd "W") 'magit-toggle-whitespace)))
 
-(require 'cl)
+(setq smerge-command-prefix (kbd "C-c"))
+
+;;;; Packages
 (require 'package)
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
@@ -63,11 +65,11 @@
   (when (not (package-installed-p p))
     (package-install p)))
 
-; Browse Kill Ring
+;;;; Browse Kill Ring
 (require 'browse-kill-ring)
 (browse-kill-ring-default-keybindings)
 
-; Magit
+;;;; Magit
 (defun magit-toggle-whitespace ()
   (interactive)
   (if (member "-w" magit-diff-options)
@@ -84,15 +86,15 @@
   (setq magit-diff-options (remove "-w" magit-diff-options))
   (magit-refresh))
 
-; Ace-jump mode
+;;;; Ace-jump mode
 (setq ace-jump-sync-emacs-mark-ring t)
 
-; Ido-mode
+;;;; Ido-mode
 (ido-mode t)
 (setq ido-use-virtual-buffers t)
 (setq ido-enable-flex-matching t)
 
-; Calc
+;;;; Calc
 (setq math-additional-units '(
   (YiB "1024 * ZiB" "yobibyte")
   (ZiB "1024 * EiB" "zebibyte")
@@ -107,7 +109,7 @@
   (bit nil "basic unit of information")
 ))
 
-; Org-mode
+;;;; Org-mode
 (setq org-agenda-files (list "~/org"))
 (setq org-mobile-directory "/var/dav")
 
@@ -167,14 +169,13 @@
   (find-file "~/org/gtd.org")
   (save-buffer))
 
-; smerge
 
-(setq smerge-command-prefix (kbd "C-c"))
-
+;;;; Functions
 (defun revert-buffer-no-confirm ()
     "Revert buffer without confirmation."
     (interactive) (revert-buffer t t))
 
+;;;; Theme
 (deftheme Nirun
   "Created 2013-06-12.")
 
