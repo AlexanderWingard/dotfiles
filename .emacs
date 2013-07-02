@@ -28,6 +28,17 @@
 
 (global-set-key (kbd "<f5>") 'revert-buffer-no-confirm)
 
+(global-set-key (kbd "<f12>") 'other-window)
+
+;;;; My Prefix
+(define-prefix-command 'lex-map)
+(define-key lex-map (kbd "s") 'shell)
+(define-key lex-map (kbd "w") 'visual-line-mode)
+(define-key lex-map (kbd "r") 'windresize)
+(define-key lex-map (kbd "g") 'rgrep)
+(define-key lex-map (kbd "c") 'calc)
+(global-set-key (kbd "C-c s") 'lex-map)
+
 ;;;; Mode specific bindings
 (eval-after-load 'comint
   '(progn (define-key comint-mode-map (kbd "C-c SPC") nil)))
@@ -51,7 +62,8 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar my-packages '(windresize
+(defvar my-packages '(guide-key
+                      windresize
                       browse-kill-ring
                       unbound
                       ace-jump-mode
@@ -88,6 +100,10 @@
 
 ;;;; Ace-jump mode
 (setq ace-jump-sync-emacs-mark-ring t)
+
+;;;; Guide key
+(guide-key-mode 1)
+(setq guide-key/guide-key-sequence '("C-c s"))
 
 ;;;; Ido-mode
 (ido-mode t)
