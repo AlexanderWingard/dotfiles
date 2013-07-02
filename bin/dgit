@@ -1,2 +1,2 @@
 #!/bin/sh
-git -c status.showUntrackedFiles=no --work-tree=$HOME --git-dir=$HOME/dotfiles.git $@
+git -c status.showUntrackedFiles=no --work-tree=$HOME --git-dir=$HOME/dotfiles.git "$@"
