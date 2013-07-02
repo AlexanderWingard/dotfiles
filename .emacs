@@ -167,6 +167,10 @@
   (find-file "~/org/gtd.org")
   (save-buffer))
 
+; smerge
+
+(setq smerge-command-prefix (kbd "C-c"))
+
 (defun revert-buffer-no-confirm ()
     "Revert buffer without confirmation."
     (interactive) (revert-buffer t t))
