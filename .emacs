@@ -38,6 +38,7 @@
 (define-key lex-map (kbd "g") 'rgrep)
 (define-key lex-map (kbd "c") 'calc)
 (define-key lex-map (kbd "t") 'toggle-truncate-lines)
+(define-key lex-map (kbd "f") 'list-fav-keys)
 (global-set-key (kbd "C-c s") 'lex-map)
 
 ;;;; Mode specific bindings
@@ -191,6 +192,19 @@
 (defun revert-buffer-no-confirm ()
     "Revert buffer without confirmation."
     (interactive) (revert-buffer t t))
+
+(setq list-fav-keys '(comment-dwim
+                      clone-indirect-buffer-other-window
+                      count-lines-page
+                      read-only-mode))
+(defun list-fav-keys ()
+  "List all my favourite commands"
+  (interactive)
+  (switch-to-buffer-other-window "*Favourite Commands*")
+  (erase-buffer)
+  (dolist (c list-keys-favs)
+    (insert (format "%-9s %10s\n"
+                    (key-description (where-is-internal c overriding-local-map t)) c))))
 
 ;;;; Theme
 (deftheme Nirun
