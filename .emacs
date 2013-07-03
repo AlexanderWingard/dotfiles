@@ -33,10 +33,11 @@
 ;;;; My Prefix
 (define-prefix-command 'lex-map)
 (define-key lex-map (kbd "s") 'shell)
-(define-key lex-map (kbd "w") 'visual-line-mode)
+(define-key lex-map (kbd "v") 'visual-line-mode)
 (define-key lex-map (kbd "r") 'windresize)
 (define-key lex-map (kbd "g") 'rgrep)
 (define-key lex-map (kbd "c") 'calc)
+(define-key lex-map (kbd "t") 'toggle-truncate-lines)
 (global-set-key (kbd "C-c s") 'lex-map)
 
 ;;;; Mode specific bindings
