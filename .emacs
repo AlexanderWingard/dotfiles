@@ -203,7 +203,7 @@
   (interactive)
   (switch-to-buffer-other-window "*Favourite Commands*")
   (erase-buffer)
-  (dolist (c list-keys-favs)
+  (dolist (c list-fav-keys)
     (insert (format "%-9s %10s\n"
                     (key-description (where-is-internal c overriding-local-map t)) c))))
 
