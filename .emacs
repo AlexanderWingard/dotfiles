@@ -189,7 +189,23 @@
   (find-file "~/org/gtd.org")
   (save-buffer))
 
+;;;; Gnus
+(require 'gnus)
+(setq user-mail-address "alexander.wingard@gmail.com")
+(setq user-full-name "Alexander Wingård")
 
+(setq gnus-select-method '(nnimap "gmail"
+                                    (nnimap-address "imap.gmail.com")
+                                      (nnimap-server-port 993)
+                                        (nnimap-stream ssl)))
+(setq message-send-mail-function 'smtpmail-send-it
+      smtpmail-starttls-credentials '(("smtp.gmail.com" 587 nil nil))
+      smtpmail-auth-credentials '(("smtp.gmail.com" 587 "alexander.wingard@gmail.com" nil))
+      smtpmail-default-smtp-server "smtp.gmail.com"
+      smtpmail-smtp-server "smtp.gmail.com"
+      smtpmail-smtp-service 587
+      smtpmail-local-domain "axw.se")
+(setq gnus-ignored-newsgroups "^to\\.\\|^[0-9. ]+\\( \\|$\\)\\|^[\"]\"[#'()]")
 ;;;; Functions
 (defun revert-buffer-no-confirm ()
     "Revert buffer without confirmation."
