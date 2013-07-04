@@ -1,0 +1,6 @@
+xterm*reverseVideo:  on
+xterm*eightBitInput: false
+xterm*metaSendsEscape: true
+xterm*font: fixed
+xterm*boldFont: fixed
+xterm*VT100.translations: #override <Btn1Up>: select-end(PRIMARY, CLIPBOARD, CUT_BUFFER0)
