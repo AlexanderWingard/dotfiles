@@ -112,6 +112,7 @@
 (ido-mode t)
 (setq ido-use-virtual-buffers t)
 (setq ido-enable-flex-matching t)
+(setq ido-use-filename-at-point 'guess)
 
 ;;;; Calc
 (setq math-additional-units '(
