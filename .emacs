@@ -106,7 +106,8 @@
 
 ;;;; Guide key
 (guide-key-mode 1)
-(setq guide-key/guide-key-sequence '("C-c s"))
+(setq guide-key/guide-key-sequence '("§"))
+(setq guide-key/popup-window-position 'bottom)
 
 ;;;; Ido-mode
 (ido-mode t)
