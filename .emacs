@@ -40,7 +40,7 @@
 (define-key lex-map (kbd "t") 'toggle-truncate-lines)
 (define-key lex-map (kbd "f") 'list-fav-keys)
 (define-key lex-map (kbd "n") 'rename-buffer)
-(global-set-key (kbd "C-c s") 'lex-map)
+(global-set-key (kbd "§") 'lex-map)
 
 ;;;; Mode specific bindings
 (eval-after-load 'comint
