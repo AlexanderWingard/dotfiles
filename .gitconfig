@@ -1,0 +1,5 @@
+[core]
+        pager = less -FXRS
+
+[color]
+        ui = true
