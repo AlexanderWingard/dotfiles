@@ -1,0 +1,4 @@
+#!/bin/sh
+export GIT_DIR=$HOME/dotfiles.git
+export GIT_WORK_TREE=$HOME
+emacs "$@"
