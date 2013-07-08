@@ -106,7 +106,7 @@
 
 ;;;; Guide key
 (guide-key-mode 1)
-(setq guide-key/guide-key-sequence '("ยง"))
+(setq guide-key/guide-key-sequence '("ง"))
 (setq guide-key/popup-window-position 'bottom)
 
 ;;;; Ido-mode
