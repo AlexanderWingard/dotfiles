@@ -40,6 +40,8 @@
 (define-key lex-map (kbd "t") 'toggle-truncate-lines)
 (define-key lex-map (kbd "f") 'list-fav-keys)
 (define-key lex-map (kbd "n") 'rename-buffer)
+(define-key lex-map (kbd "l") 'list-matching-lines)
+(define-key lex-map (kbd "m") 'smerge-mode)
 (global-set-key (kbd "§") 'lex-map)
 
 ;;;; Mode specific bindings
