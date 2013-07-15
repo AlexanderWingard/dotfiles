@@ -210,6 +210,9 @@
       smtpmail-smtp-service 587
       smtpmail-local-domain "axw.se")
 (setq gnus-ignored-newsgroups "^to\\.\\|^[0-9. ]+\\( \\|$\\)\\|^[\"]\"[#'()]")
+;;;; Comint
+(setq comint-scroll-to-bottom-on-input t)
+
 ;;;; Functions
 (defun revert-buffer-no-confirm ()
     "Revert buffer without confirmation."
