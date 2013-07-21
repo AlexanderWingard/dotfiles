@@ -219,18 +219,28 @@
     "Revert buffer without confirmation."
     (interactive) (revert-buffer t t))
 
-(setq list-fav-keys '(comment-dwim
-                      clone-indirect-buffer-other-window
-                      count-lines-page
-                      read-only-mode))
+(setq list-fav-keys '("M-; comment-dwim"
+                      "M-s o list-matching-lines"
+                      "C-x l count-lines-page"
+                      "C-x 4 c clone-indirect-buffer"
+                      "C-x C-q read-only-mode"))
 (defun list-fav-keys ()
   "List all my favourite commands"
   (interactive)
-  (switch-to-buffer-other-window "*Favourite Commands*")
-  (erase-buffer)
-  (dolist (c list-fav-keys)
-    (insert (format "%-9s %10s\n"
-                    (key-description (where-is-internal c overriding-local-map t)) c))))
+  (let ((wrp 0)
+        (inhibit-read-only t))
+    (switch-to-buffer-other-window "*Favourite Commands*")
+    (erase-buffer)
+    (local-set-key (kbd "q") 'delete-window)
+    (dolist (c list-fav-keys)
+      (insert (format "%-32s " c))
+      (setq wrp (+ wrp 32))
+      (if (> wrp (- (window-width) 32))
+          (progn (insert "\n")
+                 (setq wrp 0))))
+    (delete-trailing-whitespace)
+    (fit-window-to-buffer)
+    (setq buffer-read-only t)))
 
 (defun set-80-columns ()
   "Set the selected window to 80 columns."
