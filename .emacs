@@ -42,6 +42,7 @@
 (define-key lex-map (kbd "n") 'rename-buffer)
 (define-key lex-map (kbd "l") 'list-matching-lines)
 (define-key lex-map (kbd "m") 'smerge-mode)
+(define-key lex-map (kbd "8") 'set-80-columns)
 (global-set-key (kbd "§") 'lex-map)
 
 ;;;; Mode specific bindings
@@ -230,6 +231,15 @@
   (dolist (c list-fav-keys)
     (insert (format "%-9s %10s\n"
                     (key-description (where-is-internal c overriding-local-map t)) c))))
+
+(defun set-80-columns ()
+  "Set the selected window to 80 columns."
+  (interactive)
+  (visual-line-mode 1)
+  (delete-other-windows)
+  (split-window-right (+ 2 fill-column))
+  (switch-to-buffer-other-window "*scratch*")
+  (other-window 1))
 
 ;;;; Theme
 (deftheme Nirun
