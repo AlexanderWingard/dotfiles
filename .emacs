@@ -43,6 +43,8 @@
 (define-key lex-map (kbd "l") 'list-matching-lines)
 (define-key lex-map (kbd "m") 'smerge-mode)
 (define-key lex-map (kbd "8") 'set-80-columns)
+(define-key lex-map (kbd "i") 'indent-region)
+(define-key lex-map (kbd "w") 'delete-trailing-whitespace)
 (global-set-key (kbd "§") 'lex-map)
 
 ;;;; Mode specific bindings
@@ -53,7 +55,7 @@
   '(progn (define-key org-mode-map (kbd "C-c SPC") nil)
           (add-to-list 'org-modules 'org-habit)))
 
-(eval-after-load 'magit 
+(eval-after-load 'magit
   '(progn (define-key magit-status-mode-map (kbd "W") 'magit-toggle-whitespace)))
 
 (setq smerge-command-prefix (kbd "C-c"))
