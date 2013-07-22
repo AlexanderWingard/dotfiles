@@ -263,6 +263,19 @@
   (switch-to-buffer-other-window "*scratch*")
   (other-window 1))
 
+(defun show-recipe ()
+  "Let's get cookin"
+  (interactive)
+  (clone-indirect-buffer "*ingredients*" t)
+  (org-narrow-to-subtree)
+  (clone-indirect-buffer-other-window "*steps*" t)
+  (org-narrow-to-subtree)
+  (let ((split (re-search-forward "^$")))
+    (narrow-to-region (+ split 1) (point-max))
+    (other-window 1)
+    (narrow-to-region (point-min) split)
+    ))
+
 ;;;; Theme
 (deftheme Nirun
   "Created 2013-06-12.")
