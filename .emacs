@@ -223,7 +223,12 @@
                       "M-s o list-matching-lines"
                       "C-x l count-lines-page"
                       "C-x 4 c clone-indirect-buffer"
-                      "C-x C-q read-only-mode"))
+                      "C-x C-q read-only-mode"
+                      "M-SPC just-one-space"
+                      "M-= count-words-region"
+                      "C-x C-o delete-blank-lines"
+                      "C-x z repeat"))
+
 (defun list-fav-keys ()
   "List all my favourite commands"
   (interactive)
