@@ -38,6 +38,7 @@
 (define-key lex-map (kbd "g") 'rgrep)
 (define-key lex-map (kbd "c") 'calc)
 (define-key lex-map (kbd "t") 'toggle-truncate-lines)
+(define-key lex-map (kbd "T") 'text-mode)
 (define-key lex-map (kbd "f") 'list-fav-keys)
 (define-key lex-map (kbd "n") 'rename-buffer)
 (define-key lex-map (kbd "l") 'list-matching-lines)
