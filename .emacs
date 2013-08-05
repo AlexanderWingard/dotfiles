@@ -78,12 +78,16 @@
                       org
                       magit
                       scala-mode2
-                      erlang)
+                      erlang
+                      autopair)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
     (package-install p)))
+
+;;;; Autopair
+(autopair-global-mode)
 
 ;;;; Browse Kill Ring
 (require 'browse-kill-ring)
