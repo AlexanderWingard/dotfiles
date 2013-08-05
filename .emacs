@@ -273,6 +273,7 @@
   (org-narrow-to-subtree)
   (let ((split (re-search-forward "^$")))
     (narrow-to-region (+ split 1) (point-max))
+    (visual-line-mode 1)
     (other-window 1)
     (narrow-to-region (point-min) split)
     ))
