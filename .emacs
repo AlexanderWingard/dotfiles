@@ -79,7 +79,8 @@
                       magit
                       scala-mode2
                       erlang
-                      autopair)
+                      autopair
+                      auto-complete)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
