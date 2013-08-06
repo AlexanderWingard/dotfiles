@@ -235,7 +235,8 @@
                       "M-SPC just-one-space"
                       "M-= count-words-region"
                       "C-x C-o delete-blank-lines"
-                      "C-x z repeat"))
+                      "C-x z repeat"
+                      "M-del backward-kill-word"))
 
 (defun list-fav-keys ()
   "List all my favourite commands"
