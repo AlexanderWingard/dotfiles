@@ -98,6 +98,11 @@
 ;;;; Autopair
 (autopair-global-mode)
 
+;;;; Auto-complete
+(require 'auto-complete-config)
+(ac-config-default)
+
+
 ;;;; Browse Kill Ring
 (require 'browse-kill-ring)
 (browse-kill-ring-default-keybindings)
