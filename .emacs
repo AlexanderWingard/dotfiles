@@ -80,7 +80,6 @@
                       magit
                       scala-mode2
                       erlang
-                      autopair
                       auto-complete
                       popwin)
   "A list of packages to ensure are installed at launch.")
@@ -95,13 +94,9 @@
 (push "*Kill Ring*" popwin:special-display-config)
 (define-key lex-map (kbd "p") popwin:keymap)
 
-;;;; Autopair
-(autopair-global-mode)
-
 ;;;; Auto-complete
 (require 'auto-complete-config)
 (ac-config-default)
-
 
 ;;;; Browse Kill Ring
 (require 'browse-kill-ring)
