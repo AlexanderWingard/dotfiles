@@ -292,6 +292,7 @@
 
 (custom-theme-set-faces
  'Nirun
+ '(completions-first-difference ((t (:foreground "red"))))
  '(diff-added ((t (:foreground "chartreuse2"))))
  '(diff-changed ((t ())))
  '(diff-indicator-added ((t (:inherit diff-indicator-changed))))
