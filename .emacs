@@ -1,5 +1,4 @@
 ;;;; General settings
-(require 'cl)
 (setq safe-local-variable-values '((org-adapt-indentation)))
 (prefer-coding-system 'utf-8-unix)
 (setq-default indent-tabs-mode nil)
@@ -310,6 +309,17 @@
       (insert result)
       (when ends-with-newline
         (insert "\n")))))
+
+(defun move-captured-notes ()
+  ""
+  (interactive)
+  (find-file "~/org/from-mobile.org")
+  (beginning-of-buffer)
+  (while (org-on-heading-p)
+    (execute-kbd-macro "\C-c\C-wInbox  \C-m"))
+  (save-buffer)
+  (find-file "~/org/gtd.org")
+  (save-buffer))
 
 ;;;; Theme
 (deftheme Nirun
