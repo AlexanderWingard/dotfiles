@@ -185,6 +185,12 @@
       '(("t" "Todo" entry (file+headline "~/org/gtd.org" "Inbox")
              "* TODO %^{Brief Description}\n  %U\n  %?")))
 
+(org-add-link-type "thunderlink" 'org-thunderlink-open)
+(defun org-thunderlink-open (path)
+  "Opens an email in Thunderbird with ThunderLink."
+  (start-process "myname" nil "thunderbird" "-thunderlink" (concat "thunderlink:" path)))
+(provide 'org-thunderlink)
+
 (setq org-agenda-custom-commands
       '(
         ("o" "Office block agenda"
