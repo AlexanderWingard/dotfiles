@@ -149,6 +149,7 @@
 ))
 
 ;;;; Org-mode
+(require 'org)
 (setq org-agenda-files (list "~/org"))
 (setq org-mobile-directory "/var/dav")
 
