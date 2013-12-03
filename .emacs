@@ -293,6 +293,21 @@
     (narrow-to-region (point-min) split)
     ))
 
+;; Modded version of http://blog.jorgenschaefer.de/2012/03/emacs-snippets-calculation-helpers.html
+(defun calc-region (start end &optional prefix)
+  (interactive "r\nP")
+  (let* ((expr (buffer-substring start end))
+         (result (calc-eval expr))
+         (ends-with-newline (string-match "\n$" expr)))
+    (if prefix
+        (progn
+          (kill-new result)
+          (message "%s" result))
+      (delete-region start end)
+      (insert result)
+      (when ends-with-newline
+        (insert "\n")))))
+
 ;;;; Theme
 (deftheme Nirun
   "Created 2013-06-12.")
