@@ -37,6 +37,7 @@
 (define-key lex-map (kbd "r") 'windresize)
 (define-key lex-map (kbd "g") 'rgrep)
 (define-key lex-map (kbd "c") 'calc)
+(define-key lex-map (kbd "e") 'calc-region)
 (define-key lex-map (kbd "t") 'toggle-truncate-lines)
 (define-key lex-map (kbd "T") 'text-mode)
 (define-key lex-map (kbd "f") 'list-fav-keys)
