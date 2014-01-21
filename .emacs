@@ -169,6 +169,7 @@
 (setq org-reverse-note-order t)
 (setq org-habit-show-habits-only-for-today nil)
 (setq org-adapt-indentation nil)
+(setq org-use-sub-superscripts '{})
 
 (add-hook 'org-agenda-mode-hook '(lambda () (setq show-trailing-whitespace nil)))
 
