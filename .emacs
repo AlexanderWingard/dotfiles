@@ -61,6 +61,7 @@
   '(progn (define-key magit-status-mode-map (kbd "W") 'magit-toggle-whitespace)))
 
 (setq smerge-command-prefix (kbd "C-c"))
+(setq compilation-scroll-output 'first-error)
 
 ;;;; Packages
 (require 'package)
