@@ -185,7 +185,7 @@
 
 (setq org-capture-templates
       '(("t" "Todo" entry (file+headline "~/org/gtd.org" "Inbox")
-             "* TODO %^{Brief Description}\n  %U\n  %?")))
+             "* TODO %^{Brief Description}\n%U\n%?")))
 
 (org-add-link-type "thunderlink" 'org-thunderlink-open)
 (defun org-thunderlink-open (path)
@@ -196,13 +196,13 @@
 (setq org-agenda-custom-commands
       '(
         ("o" "Office block agenda"
-         ((agenda "" ((org-agenda-ndays 1)))
+         ((agenda "" ((org-agenda-ndays 2)))
           (tags-todo "WORK" ))
          ((org-agenda-compact-blocks t)
 	  (org-agenda-sorting-strategy '(todo-state-down))))
         ("p" "Private block agenda"
-         ((agenda "" ((org-agenda-ndays 1)))
-          (tags-todo "-WORK"
+         ((agenda "" ((org-agenda-ndays 2)))
+          (tags-todo "-WORK-REF"
                      ((org-agenda-todo-ignore-scheduled 'all)
                       (org-agenda-todo-ignore-deadlines 'all)))))))
 
