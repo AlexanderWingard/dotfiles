@@ -29,6 +29,8 @@
 
 (global-set-key (kbd "<f12>") 'other-window)
 
+(global-set-key (kbd "C-=") 'er/expand-region)
+
 ;;;; My Prefix
 (define-prefix-command 'lex-map)
 (define-key lex-map (kbd "s") 'shell)
@@ -82,7 +84,8 @@
                       scala-mode2
                       erlang
                       auto-complete
-                      popwin)
+                      popwin
+                      expand-region)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
