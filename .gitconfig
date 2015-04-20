@@ -5,4 +5,5 @@
 [color]
         ui = true
 [alias]
+        lll = log --graph --oneline --decorate --all
         ll = log --graph --oneline --decorate
