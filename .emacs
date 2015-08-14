@@ -92,6 +92,8 @@
   (when (not (package-installed-p p))
     (package-install p)))
 
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 ;;;; popwin
 (require 'popwin)
 (popwin-mode 1)
