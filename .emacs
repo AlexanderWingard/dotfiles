@@ -132,6 +132,10 @@
 (guide-key-mode 1)
 (setq guide-key/guide-key-sequence '("§"))
 (setq guide-key/popup-window-position 'bottom)
+(defun guide-key/my-hook-function-for-smerge ()
+  (guide-key/add-local-guide-key-sequence "C-c")
+  (guide-key/add-local-highlight-command-regexp "smerge-"))
+(add-hook 'smerge-mode-hook 'guide-key/my-hook-function-for-smerge)
 
 ;;;; Ido-mode
 (ido-mode t)
