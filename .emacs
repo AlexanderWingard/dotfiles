@@ -48,6 +48,7 @@
 (define-key lex-map (kbd "8") 'set-80-columns)
 (define-key lex-map (kbd "i") 'indent-region)
 (define-key lex-map (kbd "w") 'delete-trailing-whitespace)
+(define-key lex-map (kbd "u") 'move-line-up)
 (global-set-key (kbd "§") 'lex-map)
 
 ;;;; Mode specific bindings
@@ -329,6 +330,13 @@
   (save-buffer)
   (find-file "~/org/gtd.org")
   (save-buffer))
+
+(defun move-line-up ()
+  (interactive)
+  (beginning-of-line)
+  (just-one-space)
+  (backward-delete-char 2)
+  (just-one-space))
 
 ;;;; Theme
 (deftheme Nirun
