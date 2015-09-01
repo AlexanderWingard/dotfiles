@@ -131,7 +131,7 @@
 
 ;;;; Guide key
 (guide-key-mode 1)
-(setq guide-key/guide-key-sequence '("§"))
+(setq guide-key/guide-key-sequence '("§" "§ p"))
 (setq guide-key/popup-window-position 'bottom)
 (defun guide-key/my-hook-function-for-smerge ()
   (guide-key/add-local-guide-key-sequence "C-c")
