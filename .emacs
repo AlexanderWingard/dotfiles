@@ -16,8 +16,8 @@
 ;;;; Global key bindings
 (global-set-key (kbd "C-x C-b") 'bs-show)
 
-(global-set-key (kbd "C-c SPC") 'ace-jump-mode)
-(global-set-key (kbd "C-c b") 'ace-jump-mode-pop-mark)
+(global-set-key (kbd "C-c SPC") 'avy-goto-word-or-subword-1)
+(global-set-key (kbd "C-c b") 'avy-pop-mark)
 
 (global-set-key (kbd "C-c C-g") 'magit-status)
 
@@ -79,20 +79,41 @@
                       windresize
                       browse-kill-ring
                       unbound
-                      ace-jump-mode
+                      avy
                       org
                       magit
                       scala-mode2
                       erlang
                       auto-complete
                       popwin
-                      expand-region)
+                      expand-region
+                      helm)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
     (package-install p)))
 
+;;;; helm
+(require 'helm-config)
+
+(require 'helm-eshell)
+
+(helm-mode 1)
+(helm-autoresize-mode t)
+
+(global-set-key (kbd "C-x C-b")    'helm-buffers-list)
+(global-set-key (kbd "M-x")        'helm-M-x)
+(global-set-key (kbd "C-c h")      'helm-command-prefix)
+(global-set-key (kbd "C-x C-f")    'helm-find-files)
+(global-set-key (kbd "M-y")        'helm-show-kill-ring)
+(global-set-key (kbd "M-s o")      'helm-occur)
+(global-set-key (kbd "C-h SPC")    'helm-all-mark-rings)
+(define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
+
+(define-key shell-mode-map (kbd "C-c C-l") 'helm-comint-input-ring) ;; History for shell
+
+;;;; uniquify
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 ;;;; popwin
@@ -126,9 +147,6 @@
   (setq magit-diff-options (remove "-w" magit-diff-options))
   (magit-refresh))
 
-;;;; Ace-jump mode
-(setq ace-jump-sync-emacs-mark-ring t)
-
 ;;;; Guide key
 (guide-key-mode 1)
 (setq guide-key/guide-key-sequence '("§" "§ p"))
@@ -138,11 +156,6 @@
   (guide-key/add-local-highlight-command-regexp "smerge-"))
 (add-hook 'smerge-mode-hook 'guide-key/my-hook-function-for-smerge)
 
-;;;; Ido-mode
-(ido-mode t)
-(setq ido-use-virtual-buffers t)
-(setq ido-enable-flex-matching t)
-(setq ido-use-filename-at-point 'guess)
 
 ;;;; Calc
 (setq math-additional-units '(
@@ -344,6 +357,19 @@
 
 (custom-theme-set-faces
  'Nirun
+ '(helm-source-header ((t (:inherit font-lock-comment-face))))
+ '(helm-separator ((t (:inherit font-lock-comment-face))))
+ '(helm-selection ((t (:background "gray30"))))
+ '(helm-candidate-number ((t(:background "purple4"))))
+ '(helm-buffer-directory ((t (:inherit dired-directory))))
+ '(helm-buffer-file ((t (:inherit default))))
+ '(helm-buffer-process ((t (:inherit font-lock-constant-face))))
+ '(helm-buffer-size ((t (:inherit font-lock-builtin-face))))
+ '(helm-ff-directory ((t (:inherit dired-directory))))
+ '(helm-ff-dotted-directory ((t (:inherit dired-directory))))
+ '(helm-ff-file ((t (:inherit default))))
+ '(helm-ff-executable ((t (:inherit default))))
+ '(helm-header ((t (:background "gray30"))))
  '(completions-first-difference ((t (:foreground "red"))))
  '(diff-added ((t (:foreground "chartreuse2"))))
  '(diff-changed ((t ())))
@@ -382,8 +408,6 @@
  '(gnus-summary-high-ancient ((t (:foreground "#A64B00" :weight bold))))
  '(gnus-summary-low-ancient ((t (:foreground "medium turquoise" :slant italic))))
  '(gnus-summary-low-read ((t (:foreground "dark sea green" :slant italic))))
- '(header-line ((t (:inverse-video t :box (:line-width -1 :color "red" :style released-button)))))
- '(helm-header ((t (:background "DeepSkyBlue4" :weight bold))))
  '(highlight ((t (:background "sea green"))))
  '(hl-line ((t (:background "grey25"))))
  '(hl-paren-face ((t (:weight bold))))
