@@ -86,7 +86,8 @@
                       auto-complete
                       popwin
                       expand-region
-                      helm)
+                      helm
+                      htmlize)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
@@ -182,6 +183,7 @@
 (setq org-agenda-skip-scheduled-if-done t)
 (setq org-agenda-start-on-weekday nil)
 (setq org-agenda-tags-todo-honor-ignore-options t)
+(setq org-agenda-time-leading-zero t)
 (setq org-clock-modeline-total 'today)
 (setq org-enforce-todo-checkbox-dependencies t)
 (setq org-mobile-force-id-on-agenda-items nil)
@@ -335,8 +337,11 @@
   (interactive)
   (find-file "~/org/from-mobile.org")
   (beginning-of-buffer)
-  (while (org-on-heading-p)
-    (execute-kbd-macro "\C-c\C-wInbox  \C-m"))
+  (org-map-entries (lambda ()
+                     (execute-kbd-macro "\C-c\C-wInbox  \C-m")
+                     (setq org-map-continue-from (outline-previous-heading))) nil 'file)
+  (beginning-of-buffer)
+  (delete-matching-lines "^$")
   (save-buffer)
   (find-file "~/org/gtd.org")
   (save-buffer))
