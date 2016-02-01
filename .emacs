@@ -113,6 +113,8 @@
 
 (define-key shell-mode-map (kbd "C-c C-l") 'helm-comint-input-ring) ;; History for shell
 
+(setq helm-ff-auto-update-initial-value t)
+
 ;;;; uniquify
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
