@@ -77,7 +77,6 @@
 
 (defvar my-packages '(guide-key
                       windresize
-                      browse-kill-ring
                       unbound
                       avy
                       org
@@ -127,10 +126,6 @@
 ;;;; Auto-complete
 (require 'auto-complete-config)
 (ac-config-default)
-
-;;;; Browse Kill Ring
-(require 'browse-kill-ring)
-(browse-kill-ring-default-keybindings)
 
 ;;;; Magit
 (defun magit-toggle-whitespace ()
