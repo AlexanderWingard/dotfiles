@@ -137,6 +137,7 @@
 (popwin-mode 1)
 (push "*Kill Ring*" popwin:special-display-config)
 (define-key lex-map (kbd "p") popwin:keymap)
+(global-set-key (kbd "§ p p") (lambda () (interactive) (popwin:popup-last-buffer) (popwin:select-popup-window)))
 
 ;;;; Auto-complete
 (require 'auto-complete-config)
