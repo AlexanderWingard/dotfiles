@@ -26,6 +26,7 @@
 (global-set-key (kbd "C-c a") 'org-agenda)
 
 (global-set-key (kbd "<f5>") 'revert-buffer-no-confirm)
+(global-set-key (kbd "<f6>") 'next-error)
 
 (global-set-key (kbd "<f12>") 'other-window)
 
