@@ -16,9 +16,6 @@
 ;;;; Global key bindings
 (global-set-key (kbd "C-x C-b") 'bs-show)
 
-(global-set-key (kbd "C-c SPC") 'avy-goto-word-or-subword-1)
-(global-set-key (kbd "C-c b") 'avy-pop-mark)
-
 (global-set-key (kbd "C-c C-g") 'magit-status)
 
 (global-set-key (kbd "C-c l") 'org-store-link)
@@ -76,24 +73,63 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar my-packages '(guide-key
-                      windresize
-                      unbound
-                      avy
-                      org
-                      magit
-                      scala-mode2
-                      erlang
+(defvar my-packages '(
                       auto-complete
-                      popwin
+                      avy
+                      erlang
                       expand-region
+                      guide-key
                       helm
-                      htmlize)
+                      htmlize
+                      hydra
+                      magit
+                      org
+                      popwin
+                      scala-mode2
+                      swiper
+                      unbound
+                      windresize
+                      )
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
     (package-install p)))
+
+
+;;;; hydra
+(require 'hydra)
+(global-set-key
+ (kbd "C-v")
+ (defhydra hydra-move
+   (:color amaranth)
+   "move"
+   ("s" next-line)
+   ("w" previous-line)
+   ("C-w" kill-region)
+   ("M-w" kill-ring-save)
+   ("y" helm-show-kill-ring)
+   (";" comment-or-uncomment-region)
+   ("d" forward-char)
+   ("a" backward-char)
+   ("D" forward-word)
+   ("A" backward-word)
+   ("C-a" beginning-of-line)
+   ("C-e" move-end-of-line)
+   ("p" scroll-down-command)
+   ("n" scroll-up-command)
+   ("l" recenter-top-bottom)
+   ("SPC" set-mark-command)
+   ("c" avy-goto-char)
+   ("x" swiper)
+   ("b" avy-pop-mark)
+   ("q" nil :color blue)))
+
+;;;; avy
+(require 'avy)
+(global-set-key (kbd "C-c SPC") 'avy-goto-word-or-subword-1)
+(global-set-key (kbd "C-c b") 'avy-pop-mark)
+(advice-add 'swiper :before 'avy-push-mark)
 
 ;;;; helm
 (require 'helm-config)
