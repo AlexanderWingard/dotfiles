@@ -81,12 +81,11 @@
                       guide-key
                       helm
                       htmlize
-                      hydra
                       magit
                       org
                       popwin
-                      scala-mode2
                       swiper
+                      key-chord
                       unbound
                       windresize
                       )
@@ -96,39 +95,19 @@
   (when (not (package-installed-p p))
     (package-install p)))
 
-
-;;;; hydra
-(require 'hydra)
-(global-set-key
- (kbd "C-v")
- (defhydra hydra-move
-   (:color amaranth)
-   "move"
-   ("s" next-line)
-   ("w" previous-line)
-   ("C-w" kill-region)
-   ("M-w" kill-ring-save)
-   ("y" helm-show-kill-ring)
-   (";" comment-or-uncomment-region)
-   ("d" forward-char)
-   ("a" backward-char)
-   ("D" forward-word)
-   ("A" backward-word)
-   ("C-a" beginning-of-line)
-   ("C-e" move-end-of-line)
-   ("p" scroll-down-command)
-   ("n" scroll-up-command)
-   ("l" recenter-top-bottom)
-   ("SPC" set-mark-command)
-   ("c" avy-goto-char)
-   ("x" swiper)
-   ("b" avy-pop-mark)
-   ("q" nil :color blue)))
-
 ;;;; avy
 (require 'avy)
-(global-set-key (kbd "C-c SPC") 'avy-goto-word-or-subword-1)
-(global-set-key (kbd "C-c b") 'avy-pop-mark)
+
+;;;; chords
+(require 'key-chord)
+(key-chord-mode 1)
+(key-chord-define-global "öö" 'avy-goto-word-or-subword-1)
+(key-chord-define-global "ää" 'avy-pop-mark)
+
+;;;; swiper
+(global-set-key (kbd "C-s") 'swiper)
+(global-set-key (kbd "C-r") 'swiper)
+(define-key ivy-minibuffer-map (kbd "C-w") 'ivy-yank-word)
 (advice-add 'swiper :before 'avy-push-mark)
 
 ;;;; helm
