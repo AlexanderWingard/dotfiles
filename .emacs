@@ -105,6 +105,7 @@
 (key-chord-define-global "הה" 'avy-pop-mark)
 
 ;;;; swiper
+(require 'swiper)
 (global-set-key (kbd "C-s") 'swiper)
 (global-set-key (kbd "C-r") 'swiper)
 (define-key ivy-minibuffer-map (kbd "C-w") 'ivy-yank-word)
@@ -147,7 +148,11 @@
 
 ;;;; uniquify
 (require 'uniquify)
-(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
+(setq uniquify-buffer-name-style 'forward)
+(setq uniquify-separator "/")
+(setq uniquify-after-kill-buffer-p t)    ; rename after killing uniquified
+(setq uniquify-ignore-buffers-re "^\\*") ; don't muck with special buffers
+
 ;;;; popwin
 (require 'popwin)
 (popwin-mode 1)
