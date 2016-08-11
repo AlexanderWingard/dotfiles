@@ -8,7 +8,6 @@
 (setq-default show-trailing-whitespace t)
 (setq revert-without-query '(".*"))
 (menu-bar-mode -1)
-(set-scroll-bar-mode nil)
 (blink-cursor-mode 0)
 (show-paren-mode 1)
 (put 'narrow-to-region 'disabled nil)
