@@ -9,3 +9,6 @@
         ll = log --graph --oneline --decorate
 [push]
 	default = current
+[alias]
+	private = "!git config user.name 'Alexander Wingård'; git config user.email alexander.wingard@gmail.com"
+	work = "!git config user.name 'Alexander Wingård'; git config user.email alexander.wingard@ericsson.com"
